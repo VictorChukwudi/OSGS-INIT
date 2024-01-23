@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sequelize = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const board_model_1 = require("../models/board.model");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 exports.sequelize = new sequelize_typescript_1.Sequelize({
@@ -14,3 +15,4 @@ exports.sequelize = new sequelize_typescript_1.Sequelize({
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST
 });
+exports.sequelize.addModels([board_model_1.Boards]);

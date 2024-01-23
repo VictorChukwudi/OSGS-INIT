@@ -1,4 +1,5 @@
 import {Sequelize} from "sequelize-typescript"
+import { Boards } from "../models/board.model"
 import dotenv from "dotenv"
 
 
@@ -11,3 +12,5 @@ export const sequelize = new Sequelize({
     password:process.env.DB_PASSWORD,
     host:process.env.DB_HOST
 })
+
+sequelize.addModels([Boards]);

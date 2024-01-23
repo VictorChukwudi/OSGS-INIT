@@ -1,6 +1,9 @@
 import express ,{Application} from "express"
 import dotenv from "dotenv"
 import { sequelize } from "./app.config/db.connection"
+import aboutRoutes from "./routes/about.routes"
+import router from "./routes"
+import {  umzug } from "./models/index.umzug"
 
 
 dotenv.config()
@@ -11,11 +14,9 @@ const port= process.env.PORT || 4000
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
-app.get("/",(req,res)=>{
-    res.json({
-        msg:" up and running"
-    })
-})
+
+app.use("/api", router)
+
 
 const start= async():Promise<void>=>{
 try {
@@ -23,6 +24,7 @@ try {
         console.log(`Server running on port ${port}...`)
     })
     await sequelize.sync()
+    await umzug.up()
 } catch (error) {
     console.error(error)
     process.exit(1)

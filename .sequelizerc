@@ -1,4 +1,4 @@
-import path from "path";
- export default {
-    config: path.resolve("config","/src/config.ts")
- }
+const path = require("path");
+module.exports = {
+  config: path.resolve("config", "config.ts"),
+};
