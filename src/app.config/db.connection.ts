@@ -1,6 +1,8 @@
 import {Sequelize} from "sequelize-typescript"
 import { Boards } from "../models/board.model"
 import dotenv from "dotenv"
+import { Programmes } from "../models/programme.model"
+import { NstdProgrammes } from "../models/nstdprogramme.model"
 
 
 dotenv.config()
@@ -13,4 +15,6 @@ export const sequelize = new Sequelize({
     host:process.env.DB_HOST
 })
 
-sequelize.addModels([Boards]);
+sequelize.addModels([Boards, Programmes, NstdProgrammes]);
+Programmes.hasMany(NstdProgrammes)
+NstdProgrammes.belongsTo(Programmes)

@@ -1,7 +1,6 @@
 import express ,{Application} from "express"
 import dotenv from "dotenv"
 import { sequelize } from "./app.config/db.connection"
-import aboutRoutes from "./routes/about.routes"
 import router from "./routes"
 import {  umzug } from "./models/index.umzug"
 

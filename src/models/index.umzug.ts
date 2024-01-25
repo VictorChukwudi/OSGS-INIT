@@ -19,11 +19,3 @@ export const umzug= new Umzug({
 
 export type Migration = typeof umzug._types.migration;
 
-
-// export const runUmzug= async()=>{
-//     try {
-//         await umzug.up()
-//     } catch (error) {
-//         console.error(error)
-//     }
-// }

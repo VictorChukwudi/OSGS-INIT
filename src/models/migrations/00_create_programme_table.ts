@@ -4,25 +4,40 @@ import { Migration } from "../index.umzug"
 
 
 export  const up: Migration =async ({ context: queryInterface}) => {
-    await queryInterface.createTable("Boards",{
+    await queryInterface.createTable("Programmes",{
         id:{
             type: DataTypes.INTEGER,
             allowNull: true,
             autoIncrement: true,
             primaryKey: true,
         },
-        name:{
+        theme:{
             type:DataTypes.STRING
         },
-        email:{
-            type:DataTypes.STRING,
-            unique:true
-        },
-        description:{
+        type:{
             type:DataTypes.STRING
         },
-        imageURL:{
+        schedule:{
             type:DataTypes.STRING
+        },
+        start_date:{
+            type:DataTypes.DATE
+        },
+        start_end:{
+            type:DataTypes.DATE
+        },
+        duration:{
+            type:DataTypes.STRING
+        },
+        completed:{
+            type:DataTypes.BOOLEAN
+        },
+        fileURL:{
+            type: DataTypes.STRING
+        },
+        hasNstdProgram:{
+            type:DataTypes.BOOLEAN,
+            defaultValue:false
         },
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE
@@ -30,5 +45,5 @@ export  const up: Migration =async ({ context: queryInterface}) => {
 }
 
 export const down: Migration =async ({context: queryInterface}) => {
-    await queryInterface.dropTable("Boards")
+    await queryInterface.dropTable("Programmes")
 }
